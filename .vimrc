@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
+" Plugins
 call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'ajh17/vimcompletesme'
@@ -29,11 +29,15 @@ call plug#end()
 
 let Tlist_Use_Split_Window = 1
 let Tlist_Exit_OnlyWindow=1
-" com TT NERDTreeToggle | TlistToggle
-
 au VimEnter * NERDTreeToggle
 
+" Change cursor appearcance based on mode
+let timeoutlen=1000 ttimeoutlen=50
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[3 q"
+let &t_EI = "\<esc>[ q"
 
+" Editor behavior and appearance
 syntax on
 set autoindent
 set smartindent
@@ -57,6 +61,7 @@ set number
 set splitright
 set background=dark
 
+" Themes, Fonts
 colorscheme onedark
 let g:airline_theme='deus'
 let g:airline_powerline_fonts = 64
@@ -66,6 +71,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+" Extra Plugin Commands and Other Stuff
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
