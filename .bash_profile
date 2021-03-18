@@ -1,4 +1,3 @@
-alias citra_qt="./home/${USER}/bin/citra/build/bin/citra-qt";
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
