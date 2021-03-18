@@ -35,6 +35,7 @@ au VimEnter * NERDTreeToggle
 
 
 syntax on
+set autoindent
 set smartindent
 set smartcase
 set noswapfile

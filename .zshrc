@@ -1,5 +1,5 @@
 export TERM='xterm-256color'
-
+stty stop ""
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 bindkey -v;
 set editing-mode vi
