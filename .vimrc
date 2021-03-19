@@ -1,4 +1,5 @@
 " Install Vim-Plug if not present
+let hostname = substitute(system('hostname'), '\n', '', '')
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -7,16 +8,12 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-    Plug 'airblade/vim-gitgutter'
     Plug 'ajh17/vimcompletesme'
+    Plug 'airblade/vim-gitgutter'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'edkolev/tmuxline.vim'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'kopischke/vim-fetch'
-    Plug 'mg979/vim-visual-multi'
     Plug 'preservim/nerdtree'
     Plug 'rafi/awesome-vim-colorschemes'
     Plug 'sheerun/vim-polyglot'
@@ -24,8 +21,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'vim-scripts/taglist.vim'
 call plug#end()
+
+" Local-only Plugins
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "jaredfern"
+    call plug#begin('~/.vim/plugged')
+        Plug 'jremmen/vim-ripgrep'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+        Plug 'mg979/vim-visual-multi'
+        Plug 'vim-scripts/taglist.vim'
+    call plug#end()
+endif
 
 let Tlist_Use_Split_Window = 1
 let Tlist_Exit_OnlyWindow=1
