@@ -2,7 +2,7 @@ HOME_DIR=$1
 DOTFILE_DIR=$2
 
 # Which dotfiles to install
-files=(bashrc gitconfig inputrc pre-commit-config.yaml tmux.conf tmux vimrc zshrc)
+files=(bashrc gitconfig inputrc pre-commit-config.yaml tmux.conf tmux vimrc zshenv zshrc)
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
