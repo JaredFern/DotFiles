@@ -21,12 +21,12 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 if [ -d "$ZSH/custom/themes/powerlevel10k" ]; then
     ZSH_THEME="powerlevel10k/powerlevel10k"
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 else
     ZSH_THEME="ys"
 fi
 # ZSH_THEME="agnoster"
 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -120,10 +120,9 @@ compinit conda
 # Example aliases
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/jaredfern/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
