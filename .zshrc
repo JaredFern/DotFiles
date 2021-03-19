@@ -1,12 +1,4 @@
-export TERM='xterm-256color'
-stty stop ""
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-bindkey -v;
-set editing-mode vi
-
-# Syntax highlighting in less
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -27,7 +19,11 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [-d "$ZSH/custom/themes/powerlevel10k"] then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+    ZSH_THEME="ys"
+fi
 # ZSH_THEME="agnoster"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # Set list of themes to pick from when loading at random
