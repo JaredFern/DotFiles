@@ -25,7 +25,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Local-only Plugins
-let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "jaredfern"
     call plug#begin('~/.vim/plugged')
         Plug 'jremmen/vim-ripgrep'
