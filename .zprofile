@@ -1,5 +1,7 @@
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
 
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export UNITER_DIR="/home/${USER}/Research/MultimodalElectra/modeling/UNITER"
 export EFFICIENT_UNITER_DIR="/home/jaredfern/Projects/Assignments/16-785/efficient-uniter"
 export DALLE_DIR="/home/jaredfern/Projects/Assignments/11-777/11-777-template/Code/DallE-pytorch"
