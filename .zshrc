@@ -22,7 +22,6 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
-eval $(thefuck --alias)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -91,7 +90,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git python vi-mode zsh-vimode-visual zsh-autosuggestions zsh-256color
-    fast-syntax-highlighting colored-man-pages fzf
+    fast-syntax-highlighting colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh

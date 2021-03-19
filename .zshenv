@@ -39,6 +39,7 @@ open(){
     fi
 }
 
+eval $(thefuck --alias)
 
 alias jpynb_remote="jupyter lab --ip 0.0.0.0 --no-browser --port "
 alias gogh='bash -c "$(wget -qO- https://git.io/vQgMr)"'
