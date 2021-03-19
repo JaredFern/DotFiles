@@ -1,12 +1,4 @@
-export TERM='xterm-256color'
-stty stop ""
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-bindkey -v;
-set editing-mode vi
-
-# Syntax highlighting in less
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -22,15 +14,22 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
-eval $(thefuck --alias)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [ -d "$ZSH/custom/themes/powerlevel10k" ]; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+    ZSH_THEME="ys"
+fi
 # ZSH_THEME="agnoster"
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -91,7 +90,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git python vi-mode zsh-vimode-visual zsh-autosuggestions zsh-256color
-    fast-syntax-highlighting colored-man-pages fzf
+    fast-syntax-highlighting colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,21 +120,16 @@ compinit conda
 # Example aliases
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/jaredfern/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/jaredfern/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/jaredfern/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/jaredfern/anaconda3/bin:$PATH"
+        export PATH="$HOME/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

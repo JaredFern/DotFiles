@@ -1,4 +1,5 @@
 " Install Vim-Plug if not present
+let hostname = substitute(system('hostname'), '\n', '', '')
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -7,32 +8,39 @@ endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-    Plug 'airblade/vim-gitgutter'
     Plug 'ajh17/vimcompletesme'
+    Plug 'airblade/vim-gitgutter'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'edkolev/tmuxline.vim'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'jremmen/vim-ripgrep'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'kopischke/vim-fetch'
-    Plug 'mg979/vim-visual-multi'
     Plug 'preservim/nerdtree'
     Plug 'rafi/awesome-vim-colorschemes'
     Plug 'sheerun/vim-polyglot'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-eunuch'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'vim-scripts/taglist.vim'
 call plug#end()
+
+" Local-only Plugins
+if hostname == "jaredfern"
+    call plug#begin('~/.vim/plugged')
+        Plug 'jremmen/vim-ripgrep'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+        Plug 'mg979/vim-visual-multi'
+        Plug 'vim-scripts/taglist.vim'
+    call plug#end()
+endif
 
 let Tlist_Use_Split_Window = 1
 let Tlist_Exit_OnlyWindow=1
 au VimEnter * NERDTreeToggle
 
 " Change cursor appearcance based on mode
-let timeoutlen=1000 ttimeoutlen=50
+set timeoutlen=1000 ttimeoutlen=50
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[3 q"
 let &t_EI = "\<esc>[ q"
