@@ -15,4 +15,6 @@ for file in ${files}; do
     ln -sf ${DOTFILE_DIR}/.${file} ${HOME_DIR}/.${file}
 done
 
+# Make sure the conda paths are correct in zshrc
+conda init zsh
 
