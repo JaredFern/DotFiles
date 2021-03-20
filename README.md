@@ -4,7 +4,6 @@ Configs, Environments, Variables, Plugins, etc.
 ## Getting Started:
 * Getting Started: `bash install_dotfiles $HOME_DIR $DOTFILES_DIR`
 * Note: May need to remove ~/.tmux directory to avoid creating the symlink in the existing directory
-* Note: Conda paths in zshrc and bashrc should be updated for local installations
 
 
 ## TL;DR Summary:

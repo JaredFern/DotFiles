@@ -1,6 +1,4 @@
 # Syntax highlighting in less
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 export TERM='xterm-256color'
 
 alias zshhist="vim ~/.zsh_history"

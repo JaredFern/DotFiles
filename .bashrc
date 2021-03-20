@@ -123,6 +123,7 @@ fi
 
 # added by Anaconda3 installer
 
+export audio="amixer -c 0 set 'Headphone Mic Boost',0 1";
 # . /home/jaredfern/anaconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 # conda activate  # commented out by conda initialize
 
