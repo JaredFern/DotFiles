@@ -16,7 +16,7 @@ alias url="google-chrome"
 alias incognito="google-chrome --incognito"
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
-
+alias dotfiles="cd /home/jaredfern/dotfiles"
 eval $(thefuck --alias)
 
 docbox_mkdir() {
