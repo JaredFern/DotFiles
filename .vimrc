@@ -31,6 +31,7 @@ if hostname == "jaredfern"
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         Plug 'mg979/vim-visual-multi'
+        Plug 'ryanoasis/vim-devicons'
         Plug 'vim-scripts/taglist.vim'
     call plug#end()
 endif
@@ -40,7 +41,7 @@ let Tlist_Exit_OnlyWindow=1
 au VimEnter * NERDTreeToggle
 
 " Change cursor appearcance based on mode
-set timeoutlen=1000 ttimeoutlen=50
+set timeoutlen=1000 ttimeoutlen=10
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[3 q"
 let &t_EI = "\<esc>[ q"
