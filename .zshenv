@@ -2,7 +2,7 @@
 export TERM='xterm-256color'
 
 alias zshhist="vim ~/.zsh_history"
-alias zprofil="vim ~/.zprofile"
+alias zprofile="vim ~/.zprofile"
 alias zshenv="vim ~/.zshenv"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"

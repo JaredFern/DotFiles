@@ -19,7 +19,7 @@ Configs, Environments, Variables, Plugins, etc.
   * Theme: Powerlevel10k if present or default to ys
   * Plugins: git, python, vim (with visual indicators), autosuggest, syntax highlighting
   * Paths for project dirs and aliases for CLI tools, handrolled scripts
-* Tmux: 
+* Tmux:
   * Theme: Tmuxline using Vim Airline color scheme
   * Key Remaps: Vim Bindings for pane resizing and davigation, Prefix Key -> A
   * Remote Host Configs: Prefix Key -> G, Turn mouse mode off
