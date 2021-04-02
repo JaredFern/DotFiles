@@ -14,8 +14,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'edkolev/tmuxline.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'kopischke/vim-fetch'
+    Plug 'mg979/vim-visual-multi'           " Vim 8 or higher
     Plug 'preservim/nerdtree'
     Plug 'rafi/awesome-vim-colorschemes'
+    Plug 'ryanoasis/vim-devicons'           " Vim 8 or higher
     Plug 'sheerun/vim-polyglot'
     Plug 'tmux-plugins/vim-tmux'
     Plug 'tpope/vim-commentary'
@@ -30,7 +32,6 @@ if hostname == "jaredfern"
         Plug 'jremmen/vim-ripgrep'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
-        Plug 'mg979/vim-visual-multi'
         Plug 'vim-scripts/taglist.vim'
     call plug#end()
 endif
@@ -40,7 +41,7 @@ let Tlist_Exit_OnlyWindow=1
 au VimEnter * NERDTreeToggle
 
 " Change cursor appearcance based on mode
-set timeoutlen=1000 ttimeoutlen=50
+set timeoutlen=1000 ttimeoutlen=10
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[3 q"
 let &t_EI = "\<esc>[ q"
@@ -55,6 +56,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set encoding=UTF-8
 set colorcolumn=80
 set tabstop=2
 set softtabstop=2
