@@ -1,21 +1,4 @@
-# Syntax highlighting in less
-export TERM='xterm-256color'
-
-alias zshhist="vim ~/.zsh_history"
-alias zprofile="vim ~/.zprofile"
-alias zshenv="vim ~/.zshenv"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias tmuxconf="vim ~/.tmux.conf"
-
-bindkey -v;
-set editing-mode vi
-
-stty stop ""
-
 # ONLY on localhost
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export UNITER_DIR="/home/${USER}/Research/MultimodalElectra/modeling/UNITER"
@@ -43,7 +26,7 @@ docbox_mkdir() {
 port_fwd() {
     # $1: Port number
     # $2: Remote host
-    ssh -N -L "${1}:localhost:${1}" ${2}
+    ssh -N -L "${2}:localhost:${2}" ${1}
 }
 
 open(){

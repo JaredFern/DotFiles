@@ -1,3 +1,23 @@
+# -------------------------- ZSH ENV CONFIGS --------------------------
+# Syntax highlighting in less
+export TERM='xterm-256color'
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+alias zshhist="vim ~/.zsh_history"
+alias zprofile="vim ~/.zprofile"
+alias zshenv="vim ~/.zshenv"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias tmuxconf="vim ~/.tmux.conf"
+
+bindkey -v;
+set editing-mode vi
+
+stty stop ""
+
+# -------------------------- OHMYZSH CONFIGS --------------------------
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 
 # Initialization code that may require console input (password prompts, [y/n]
@@ -47,7 +67,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -89,7 +109,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( ...ENVS)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git python vi-mode zsh-vimode-visual zsh-autosuggestions zsh-256color
+    git python vi-mode zsh-autosuggestions zsh-256color
     fast-syntax-highlighting colored-man-pages docker
 )
 
