@@ -1,0 +1,40 @@
+FROM continuumio/anaconda3:latest
+
+USER root
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Update Packages
+RUN apt-get update -qq \
+    && apt-get upgrade -y \
+    && apt-get install --no-install-recommends -y libgtk2.0-0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install minimal dev tools
+RUN apt-get update                         \
+    && apt-get install -y git zsh          \
+    && apt-get install -y openssh-client   \
+    && apt-get install -y openssh-server   \
+    && apt-get install -y vim neovim       \
+    && apt-get install -y fzf ripgrep      \
+    && apt-get install -y tmux htop        \
+    && apt-get install -y p7zip ffmpeg
+
+# Pytorch Install
+RUN conda install -y --quiet numpy pyyaml mkl mkl-include setuptools cmake cffi typing \
+    && conda install -y --quiet -c mingfeima mkldnn \
+    && conda install -y --quiet pytorch torchvision torchaudio cpuonly -c pytorch
+
+# OpenCV Install
+RUN conda install -y --quiet jupyter Pillow \
+    && conda config --add channels conda-forge \
+    && conda install -c menpo opencv3 \
+    && conda clean -tipsy
+
+# Python pip installs
+RUN pip install pre-commit tqdm jsonlines   \
+    && pip install spacy nltk wandb horovod \
+    && pip install tensorflow tensorboard   \
+    && pip install pytorch-pretrained-bert  \
+    && pip install tokenizers transformers

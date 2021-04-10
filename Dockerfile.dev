@@ -1,0 +1,28 @@
+FROM  jaredfern/jaredfern:minimal
+
+# Install optional dev tools
+RUN apt-get update -y                              \
+    && apt install -y software-properties-common   \
+    && apt install -y exuberant-ctags              \
+    && apt install -y source-highlight             \
+    && apt-get clean  -y                           \
+    && rm -rf /var/lib/apt/lists/*
+
+# Update to Vim8 (for old ubuntu releases)
+RUN add-apt-repository ppa:jonathonf/vim --yes     \
+    && apt update -y && apt install -y vim
+
+# Some useful python pkgs
+RUN pip install pre-commit tqdm
+
+# Set Zsh as Default Shell with Oh-My-Zsh and Powerlevel10k
+RUN chsh -s $(which zsh) \
+    && yes | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" \
+    && git clone "https://github.com/zdharma/fast-syntax-highlighting.git" ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting \
+    && git clone "https://github.com/chrissicool/zsh-256color" ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-256color \
+    && git clone "https://github.com/zsh-users/zsh-autosuggestions" ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+RUN cd ~ && git clone https://github.com/JaredFern/DotFiles.git     \
+    && cd DotFiles && chmod +x install_dotfiles.sh                  \
+    && ./install_dotfiles.sh $HOME/DotFile                          \
