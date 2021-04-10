@@ -72,7 +72,7 @@ set splitright
 set background=dark
 
 " Themes, Fonts
-colorscheme onedark
+silent! colorscheme onedark
 let g:airline_theme='deus'
 let g:airline_powerline_fonts = 64
 if exists('+termguicolors')
