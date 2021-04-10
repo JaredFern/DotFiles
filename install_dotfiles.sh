@@ -1,5 +1,4 @@
-HOME_DIR=$1
-DOTFILE_DIR=$2
+DOTFILE_DIR=$1
 
 # Which dotfiles to install
 files="bashrc gitconfig inputrc pre-commit-config.yaml tmux.conf tmux vimrc zshenv zshrc"
@@ -12,9 +11,8 @@ echo "...done"
 # create symlinks (will overwrite old dotfiles)
 for file in ${files}; do
     echo "Creating symlink to $file in home directory."
-    ln -sf ${DOTFILE_DIR}/.${file} ${HOME_DIR}/.${file}
+    ln -sf ${DOTFILE_DIR}/.${file} ${HOME}/.${file}
 done
 
 # Make sure the conda paths are correct in zshrc
 conda init zsh
-
