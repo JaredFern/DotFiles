@@ -11,10 +11,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'ajh17/vimcompletesme'
     Plug 'airblade/vim-gitgutter'
     Plug 'bronson/vim-trailing-whitespace'
+    Plug 'dkarter/bullets.vim'
     Plug 'edkolev/tmuxline.vim'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'kshenoy/vim-signature'
     Plug 'kopischke/vim-fetch'
     Plug 'mg979/vim-visual-multi'           " Vim 8 or higher
+    Plug 'nvie/vim-flake8'
     Plug 'preservim/nerdtree'
     Plug 'rafi/awesome-vim-colorschemes'
     Plug 'ryanoasis/vim-devicons'           " Vim 8 or higher
@@ -22,25 +25,24 @@ call plug#begin('~/.vim/plugged')
     Plug 'tmux-plugins/vim-tmux'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-unimpaired'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-call plug#end()
-
-" Local-only Plugins
-if hostname == "jaredfern"
-    call plug#begin('~/.vim/plugged')
+    " Local-only Plugins
+    if hostname == "jaredfern"
         Plug 'jremmen/vim-ripgrep'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         Plug 'vim-scripts/taglist.vim'
-    call plug#end()
-endif
+    endif
+call plug#end()
 
 let Tlist_Use_Split_Window = 1
 let Tlist_Exit_OnlyWindow=1
 au VimEnter * NERDTreeToggle
 
-" Change cursor appearcance based on mode
+" Change cursor appearance based on mode
 set timeoutlen=1000 ttimeoutlen=10
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[3 q"
@@ -57,7 +59,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set encoding=UTF-8
-set colorcolumn=80
+set colorcolumn=100
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -66,15 +68,18 @@ set t_Co=256
 set ts=4 sw=4 expandtab
 set mouse=a
 set clipboard=unnamedplus
-
 set number
 set splitright
 set background=dark
 
 " Themes, Fonts
-colorscheme onedark
+silent! colorscheme onedark
 let g:airline_theme='deus'
 let g:airline_powerline_fonts = 64
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

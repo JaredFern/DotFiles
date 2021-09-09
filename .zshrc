@@ -9,6 +9,8 @@ alias zprofile="vim ~/.zprofile"
 alias zshenv="vim ~/.zshenv"
 alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
+alias precommit_conf="vim ~/.pre-commit-config.yaml"
+alias sshconf="vim ~/.ssh/config"
 alias tmuxconf="vim ~/.tmux.conf"
 
 bindkey -v;
@@ -85,7 +87,7 @@ DISABLE_UPDATE_PROMPT="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -109,7 +111,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git python vi-mode zsh-autosuggestions zsh-256color
+    git python zsh-vi-mode zsh-autosuggestions zsh-256color
     fast-syntax-highlighting colored-man-pages docker
 )
 
@@ -146,12 +148,21 @@ __conda_setup="$('/home/jaredfern/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /de
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/jaredfern/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jaredfern/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/anaconda3/bin:$PATH"
+        export PATH="/home/jaredfern/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH=/usr/local/go/bin:$PATH
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
