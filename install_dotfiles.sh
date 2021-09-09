@@ -15,5 +15,5 @@ for file in ${files}; do
 done
 
 # Make sure the conda paths are correct in zshrc
-vim +PlugInstall +qall
+vim +silent +PlugInstall +qall
 conda init zsh
